@@ -38,59 +38,66 @@ namespace инженерный_калькулятор
                 
         public abstract class Operation
     {
-        public abstract string Name { get; }
 
-        public abstract double Run(params double[] numbers);
+        public abstract class Operation //шаблон операций
+        {
+            public abstract string Name { get; }
+
+            public abstract double Run(params double[] numbers);
+        }
+
+        public class Addition : Operation
+        {
+            public override string Name => "Сложение";
+
+            public override double Run(params double[] numbers)
+            {
+                return numbers.Sum();
+            }
+        }
+
+        public class Substraction : Operation
+        {
+            public override string Name => "Вычитание";
+
+            public override double Run(params double[] numbers)
+            {
+                return 0d;
+            }
+        }
+
+        public class Multiplacation : Operation
+        {
+            public override string Name => "Умножение";
+
+            public override double Run(params double[] numbers)
+            {
+                return 0d;
+            }
+        }
+
+        public class Division : Operation
+        {
+            public override string Name => "Деление";
+
+            public override double Run(params double[] numbers)
+            {
+                return 0d;
+            }
+        }
+
+        public class Sqrt : Operation
+        {
+            public override string Name => "Квадратный корень";
+
+            public override double Run(params double[] numbers)
+            {
+                return 0d;
+            }
+        }
+
     }
-public sealed class Addition : Operation
-    public override string Name => "сложение [+]";
-                        if (choice == "+")
-                        {
-                            foreach (int ele in Wht)
-                            {
-                                result = (result + ele);
-                            }
-                            Print(Convert.ToString(result));
-                        }
-                public sealed class Substraction : Operation
-    {
-        public override string Name => "вычитание [-]";
-                        else if (choice == "-")
-                        {
-                            result = Wht[0];
-                            foreach(int ele in Wht)
-                            {
-                            result = (result - ele);
-                            }
-                            result = result + Wht[0];
-                            Print(Convert.ToString(result));
-                        }
-                    public sealed class Multiplacation : Operation
-    {
-        public override string Name => "умножение [*]";
-                        else if (choice == "*")
-                        {
-                            result = Wht[0];
-                            foreach(int ele in Wht)
-                            {
-                            result = (result * ele);
-                            }
-                            result = result / Wht[0];
-                            Print(Convert.ToString(result));
-                        }
-                        public sealed class Division : Operation
-    {
-        public override string Name => "деление [:]";
-                        else if (choice == ":")
-                        {
-                            result = Wht[0];
-                            foreach(int ele in Wht)
-                            {
-                            result = (result / ele);
-                            }
-                            result = result * Wht[0];
-                            Print(Convert.ToString(result));
-                        }
+
                 }
 
             }
@@ -118,10 +125,48 @@ Console.WriteLine("Выберите номер вида операции: 1.Ал
                         break;
 
                     default:
-                        Console.WriteLine("Неизвестная команда!!!!!");
-                        break;
-
                         string choice = Console.ReadLine();
                         double result = 0;}
         }
+}
+{
+        private static string value; private static int choice;
+
+        public void Run()
+        {
+            do
+            {
+                Operation operations = new();
+                DataInput.UserInput();
+
+                choice = Convert.ToInt32(Console.ReadLine());
+
+                switch (choice)
+                {
+                    default:
+                        Console.WriteLine("Неизвестный оператор!");
+                        break;
+                    case 1:
+                        Console.WriteLine("Результат: " +  '\n');
+                        break;
+                    case 2:
+                        Console.WriteLine("Результат: " + Operation.SubtractionOperation, '\n');
+                        break;
+                    case 3:
+                        Console.WriteLine("Результат: " + Operation.MultiplicationOperation, '\n');
+                        break;
+                    case 4:
+                        Console.WriteLine("Результат: " + Operation.DivisionOperation, '\n');  
+                        break;
+                        //больше операций 
+                };
+
+                Console.Write("Подолжить? (д/н):", '\n');
+                value = Console.ReadLine();
+            }
+            while
+
+            (value == "y" || value == "Y" || value == "д" || value == "Д");
+        }
+    }
 }
