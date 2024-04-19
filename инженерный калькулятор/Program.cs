@@ -8,49 +8,120 @@ namespace инженерный_калькулятор
 {
     class Program
     {
-        static void Main(string[] args)
+       
+   }
+    public class Program {
         {
-            double firstvalue, twovalue;
-            string operatorV;
-
-            Console.WriteLine("Введите первое значение: ");
-            firstvalue = Double.Parse(Console.ReadLine());
-
-            Console.WriteLine("Введите второе значение: ");
-            twovalue = Double.Parse(Console.ReadLine());
-
-            Console.WriteLine("Выберите метод операции: | - | * | / |");
-            operatorV = Console.ReadLine();
-
-            switch (operatorV)
+        public static void Menu(Operation[] operations)
+        {
+            Console.WriteLine("Новая операция:");
+            for (int i = 0; i < operations.Length; i++)
             {
-                case "+":
-                    Console.WriteLine(firstvalue + twovalue);
-                    break;
-                case "-":
-                    Console.WriteLine(firstvalue - twovalue);
-                    break;
-                case "*":
-                    Console.WriteLine(firstvalue - twovalue);
-                    break;
-                case "/":
-                    if (firstvalue == 0)
-                        Console.WriteLine(0);
-                    else if (twovalue == 0)
-                        Console.WriteLine(0);
-                    else
-                        Console.WriteLine(firstvalue / twovalue);
-                        break;
+                Operation operation = operations[i];
+                Console.WriteLine($"{i + 1}. {operation.Name}");
+            }
+        }
+        static void Main(string[] args) {
+            try
+            {
+                Console.WriteLine("Вместо знака корень используйте # ");
+                Console.WriteLine("Выберите необходимое количество чисел ");
+                string a = (Console.ReadLine());
+                string[] Nums = a.Split(new char[] { ' ' }); //Создоётся массив записывающий числа считывая через пробел
+                double[] Wht = new double[Nums.Length];
+                int gg = 0;
+                foreach (string el in Nums) // Цикл перебора объектов в массиве
+                {
+                    Wht[gg] = Convert.ToDouble(el);
+                    gg++;
+                }
+                
+        public abstract class Operation
+    {
+        public abstract string Name { get; }
 
-
-                default:
-                    Console.WriteLine("Неизвестная команда, повторите попытку!");
-                    break;
+        public abstract double Run(params double[] numbers);
+    }
+public sealed class Addition : Operation
+    public override string Name => "сложение [+]";
+                        if (choice == "+")
+                        {
+                            foreach (int ele in Wht)
+                            {
+                                result = (result + ele);
+                            }
+                            Print(Convert.ToString(result));
+                        }
+                public sealed class Substraction : Operation
+    {
+        public override string Name => "вычитание [-]";
+                        else if (choice == "-")
+                        {
+                            result = Wht[0];
+                            foreach(int ele in Wht)
+                            {
+                            result = (result - ele);
+                            }
+                            result = result + Wht[0];
+                            Print(Convert.ToString(result));
+                        }
+                    public sealed class Multiplacation : Operation
+    {
+        public override string Name => "умножение [*]";
+                        else if (choice == "*")
+                        {
+                            result = Wht[0];
+                            foreach(int ele in Wht)
+                            {
+                            result = (result * ele);
+                            }
+                            result = result / Wht[0];
+                            Print(Convert.ToString(result));
+                        }
+                        public sealed class Division : Operation
+    {
+        public override string Name => "деление [:]";
+                        else if (choice == ":")
+                        {
+                            result = Wht[0];
+                            foreach(int ele in Wht)
+                            {
+                            result = (result / ele);
+                            }
+                            result = result * Wht[0];
+                            Print(Convert.ToString(result));
+                        }
+                }
 
             }
-            Console.ReadKey();
-
-
+Consol.ReadLine();
+        }
+       public static void Ptint(string Text) 
+        {
+            Console.WriteLine(Text);
         }
     }
+}
+            class ProcessCalculation
+                {
+        public static void TextLines()
+        {
+Console.WriteLine("Выберите номер вида операции: 1.Алгебраические; 2.Тригонометрические");
+                string f = (Console.ReadLine());
+                switch (f) {
+                    case "1":
+                        Console.WriteLine("Выбирите оперцию: x ^ y; # х; сложение [+]; вычитание [-]; деление [:]; умножение [*]");
+                        break;
+
+                    case "2":
+                        Console.WriteLine("Выбирите оперцию: Sin | Cos | tan");
+                        break;
+
+                    default:
+                        Console.WriteLine("Неизвестная команда!!!!!");
+                        break;
+
+                        string choice = Console.ReadLine();
+                        double result = 0;}
+        }
 }
